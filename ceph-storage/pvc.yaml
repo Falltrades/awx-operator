@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-provisioner: ceph.com/rbd
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    app.kubernetes.io/component: database
+    app.kubernetes.io/instance: postgres-13-awx-demo
+    app.kubernetes.io/managed-by: awx-operator
+    app.kubernetes.io/name: postgres-13
+  name: postgres-13-awx-demo-postgres-13-0
+  namespace: default
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: ceph-rbd
+  volumeMode: Filesystem
+  volumeName: postgres-13-awx-demo-postgres-13-0
